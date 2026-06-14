@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="site/public/morph-mark.svg" width="72" height="72" alt="Morph" />
+  <img src="icons/icon-master.png" width="64" height="64" alt="Morph" />
 </p>
 
 <h3 align="center">Morph</h3>
