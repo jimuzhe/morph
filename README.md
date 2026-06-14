@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="icons/icon-master.png" width="64" height="64" alt="Morph" />
+  <img src="icons/plugin-icon-source.png" width="128" height="128" alt="Morph" />
 </p>
 
 <h3 align="center">Morph</h3>

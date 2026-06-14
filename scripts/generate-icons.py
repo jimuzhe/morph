@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate Morph icons from a single master source (website favicon)."""
+"""Generate Morph icons from plugin-icon-source.png (512px master)."""
 
 from __future__ import annotations
 
@@ -10,7 +10,7 @@ from pathlib import Path
 from PIL import Image, ImageDraw
 
 ROOT = Path(__file__).resolve().parents[1]
-ICON_SRC = ROOT / "icons" / "website-favicon-source.png"
+ICON_SRC = ROOT / "icons" / "plugin-icon-source.png"
 CORNER_RADIUS_RATIO = 0.22
 MASTER_SIZE = 512
 
