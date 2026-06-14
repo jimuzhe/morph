@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>示例页面 - HTMLPPT Demo</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, sans-serif; background: #f0f4f8; color: #1a1a2e; }
+    .hero { text-align: center; padding: 80px 20px; background: linear-gradient(135deg, #667eea, #764ba2); color: white; }
+    .hero h1 { font-size: 48px; margin-bottom: 16px; }
+    .hero p { font-size: 20px; opacity: 0.9; }
+    .cards { display: flex; gap: 24px; padding: 60px 40px; justify-content: center; flex-wrap: wrap; }
+    .card { background: white; border-radius: 12px; padding: 32px; width: 280px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+    .card h3 { font-size: 20px; margin-bottom: 12px; color: #667eea; }
+    .card p { font-size: 14px; line-height: 1.6; color: #666; }
+    .avatar { width: 120px; height: 120px; border-radius: 50%; margin: 0 auto 20px; display: block; }
+    footer { text-align: center; padding: 40px; color: #999; font-size: 14px; }
+  </style>
+</head>
+<body>
+  <section class="hero">
+    <h1>Hello, HTMLPPT!</h1>
+    <p>双击编辑这段文字，拖拽卡片调整位置</p>
+  </section>
+  <div class="cards">
+    <div class="card">
+      <img class="avatar" src="https://api.dicebear.com/7.x/avataaars/svg?seed=htmlppt" alt="头像">
+      <h3>可视化编辑</h3>
+      <p>像编辑 PPT 一样修改 HTML，无需接触代码。</p>
+    </div>
+    <div class="card">
+      <h3>拖拽布局</h3>
+      <p>自由拖拽元素，调整尺寸，实时预览效果。</p>
+    </div>
+    <div class="card">
+      <h3>一键导出</h3>
+      <p>保存为独立 HTML 文件，样式全部内联嵌入。</p>
+    </div>
+  </div>
+  <footer>HTMLPPT Editor Demo Page</footer>
+</body>
+</html>

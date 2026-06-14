@@ -1,0 +1,173 @@
+@import "tailwindcss";
+@config "../tailwind.config.ts";
+
+:root {
+  --font-sans: Arial, Helvetica, sans-serif;
+  --background: 0 0% 3%;
+  --foreground: 0 0% 96%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  min-height: 100%;
+  overflow: hidden;
+}
+
+body {
+  margin: 0;
+  background: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-family: var(--font-sans);
+}
+
+.page-snap-container {
+  height: 100vh;
+  height: 100dvh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: y proximity;
+  -webkit-overflow-scrolling: touch;
+}
+
+.page-snap-section {
+  height: 100vh;
+  height: 100dvh;
+  min-height: 100vh;
+  min-height: 100dvh;
+  scroll-snap-align: start;
+  scroll-snap-stop: normal;
+}
+
+.page-snap-gap {
+  height: clamp(56px, 9vh, 112px);
+  scroll-snap-align: none;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.55) 42%,
+    #000 100%
+  );
+}
+
+.page-snap-gap--small {
+  height: clamp(32px, 5vh, 64px);
+}
+
+.page-hero-fade {
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 15;
+  height: clamp(96px, 18vh, 220px);
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.45) 55%,
+    #000 100%
+  );
+}
+
+.page-section-content {
+  opacity: 0;
+  transform: translate3d(0, 36px, 0) scale(0.985);
+  filter: blur(8px);
+  transition:
+    opacity 900ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1000ms cubic-bezier(0.22, 1, 0.36, 1),
+    filter 900ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform, filter;
+}
+
+.page-section-content--visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+  filter: blur(0);
+}
+
+.page-section-content--hidden {
+  opacity: 0;
+  transform: translate3d(0, 36px, 0) scale(0.985);
+  filter: blur(8px);
+}
+
+.page-snap-section:first-child .page-section-content--visible {
+  transition-duration: 1200ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-section-content {
+    filter: none;
+    transition: opacity 300ms ease;
+    transform: none;
+  }
+
+  .page-section-content--hidden {
+    transform: none;
+    filter: none;
+  }
+}
+
+.bento-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+}
+
+.bento-c0,
+.bento-c1,
+.bento-c2,
+.bento-c3,
+.bento-c4 {
+  align-self: start;
+  height: fit-content;
+}
+
+@media (min-width: 640px) {
+  .bento-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .bento-grid {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    grid-template-rows: auto auto auto;
+    grid-template-areas:
+      "c0 c0 c0 c1 c1 ."
+      "c2 c2 c2 c2 c3 c3"
+      "c4 c4 . . . .";
+  }
+
+  .bento-c0 {
+    grid-area: c0;
+  }
+
+  .bento-c1 {
+    grid-area: c1;
+  }
+
+  .bento-c2 {
+    grid-area: c2;
+  }
+
+  .bento-c3 {
+    grid-area: c3;
+  }
+
+  .bento-c4 {
+    grid-area: c4;
+  }
+
+  .bento-heading {
+    margin-top: 1.5rem;
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "name": "htmlppt-editor",
+  "private": true,
+  "version": "1.1.1",
+  "description": "Chrome 扩展 — 像编辑 PPT 一样直接修改 HTML 页面",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "dev:site": "vite --config vite.config.website.ts",
+    "build": "tsc -b && vite build",
+    "build:site": "vite build --config vite.config.website.ts",
+    "package": "npm run build && node scripts/package.mjs",
+    "lint": "eslint ."
+  },
+  "devDependencies": {
+    "@crxjs/vite-plugin": "^2.6.1",
+    "@types/chrome": "^0.1.43",
+    "@types/node": "^24.12.3",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.2",
+    "autoprefixer": "^10.5.0",
+    "postcss": "^8.5.15",
+    "tailwindcss": "^3.4.19",
+    "typescript": "~6.0.2",
+    "vite": "^8.0.12"
+  },
+  "dependencies": {
+    "@paper-design/shaders-react": "^0.0.76",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "framer-motion": "^12.40.0",
+    "lucide-react": "^1.18.0",
+    "next-themes": "^0.4.6",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "tailwind-merge": "^3.6.0"
+  }
+}
