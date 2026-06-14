@@ -33,3 +33,5 @@ site/out
 # Local / tooling
 .claude
 Untitled
+.vercel
+site/.vercel
