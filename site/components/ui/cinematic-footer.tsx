@@ -309,7 +309,7 @@ export function CinematicFooter() {
 
                 <MagneticButton
                   as="a"
-                  href="https://github.com"
+                  href="https://github.com/jimuzhe/morph"
                   className="footer-glass-pill group flex items-center gap-3 rounded-full px-10 py-5 text-sm font-bold text-white md:text-base"
                 >
                   <svg className="h-6 w-6 text-white/55 transition-colors group-hover:text-white" viewBox="0 0 24 24" fill="currentColor">
