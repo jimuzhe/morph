@@ -5,6 +5,7 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { cn } from "@/lib/utils";
+import { FooterScatterText } from "@/components/ui/footer-scatter-text";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -192,7 +193,6 @@ const MarqueeItem = () => (
 export function CinematicFooter() {
   const wrapperRef = useRef<HTMLElement>(null);
   const giantTextRef = useRef<HTMLDivElement>(null);
-  const headingRef = useRef<HTMLHeadingElement>(null);
   const linksRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -221,12 +221,11 @@ export function CinematicFooter() {
       );
 
       gsap.fromTo(
-        [headingRef.current, linksRef.current],
+        linksRef.current,
         { y: 50, opacity: 0 },
         {
           y: 0,
           opacity: 1,
-          stagger: 0.15,
           ease: "power3.out",
           scrollTrigger: {
             trigger: wrapperRef.current,
@@ -276,9 +275,10 @@ export function CinematicFooter() {
 
           <div
             ref={giantTextRef}
-            className="footer-giant-bg-text pointer-events-none absolute -bottom-[5vh] left-1/2 z-0 -translate-x-1/2 select-none whitespace-nowrap"
+            className="footer-giant-bg-text pointer-events-none absolute bottom-[5.5rem] left-1/2 z-0 -translate-x-1/2 select-none whitespace-nowrap"
+            aria-hidden
           >
-            MORPH
+            morph
           </div>
 
           <div className="absolute left-0 top-12 z-10 w-full -rotate-2 scale-110 overflow-hidden border-y border-white/10 bg-black/60 py-4 shadow-2xl backdrop-blur-md">
@@ -289,8 +289,12 @@ export function CinematicFooter() {
           </div>
 
           <div className="relative z-10 mx-auto mt-20 flex w-full max-w-5xl flex-1 flex-col items-center justify-center px-6">
-            <h2 ref={headingRef} className="footer-text-glow mb-12 text-center text-5xl font-black tracking-tighter md:text-8xl">
-              Edit HTML like slides.
+            <h2 className="mb-12 text-center text-5xl font-black tracking-tighter md:text-8xl">
+              <FooterScatterText
+                text="Edit HTML like slides."
+                triggerRef={wrapperRef}
+                charClassName="footer-text-glow"
+              />
             </h2>
 
             <div ref={linksRef} className="flex w-full flex-col items-center gap-6">
@@ -354,20 +358,22 @@ export function CinematicFooter() {
             </div>
           </div>
 
-          <div className="relative z-20 flex w-full items-center justify-between px-6 pb-8 md:px-12">
-            <div className="text-[10px] font-semibold uppercase tracking-widest text-white/45 md:text-xs">
-              © 2026 Morph v1.1.1
-            </div>
+          <div className="relative z-30 mt-auto w-full shrink-0 border-t border-white/8 bg-[#050201] px-6 py-4 md:px-12">
+            <div className="flex w-full items-center justify-between">
+              <div className="text-[10px] font-semibold uppercase tracking-widest text-white/45 md:text-xs">
+                © 2026 Morph v1.1.1
+              </div>
 
-            <MagneticButton
-              as="button"
-              onClick={scrollToTop}
-              className="footer-glass-pill flex h-12 w-12 items-center justify-center rounded-full text-white/55 hover:text-white"
-            >
-              <svg className="h-5 w-5 transition-transform duration-300 hover:-translate-y-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
-              </svg>
-            </MagneticButton>
+              <MagneticButton
+                as="button"
+                onClick={scrollToTop}
+                className="footer-glass-pill flex h-12 w-12 items-center justify-center rounded-full text-white/55 hover:text-white"
+              >
+                <svg className="h-5 w-5 transition-transform duration-300 hover:-translate-y-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+                </svg>
+              </MagneticButton>
+            </div>
           </div>
       </footer>
     </>

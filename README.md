@@ -1,77 +1,201 @@
-# HTMLPPT Editor
+<p align="center">
+  <img src="public/icon192.png" width="88" height="88" alt="Morph" />
+</p>
 
-Chrome 扩展 — 在任意 HTML 页面上直接编辑，像操作 PPT 一样简单。
+<h1 align="center">Morph</h1>
 
-## 产品形态
+<p align="center">
+  <strong>Edit any HTML page like a slide deck.</strong><br />
+  A Chrome extension that injects a visual editor directly into live pages — select, drag, edit text, replace images, and refine layouts with AI.
+</p>
 
-**不是独立网页**，而是注入到当前页面里的浮动工具栏：
+<p align="center">
+  <a href="https://morph-longdz6299-7110s-projects.vercel.app"><img src="https://img.shields.io/badge/website-live-EC4E02?style=for-the-badge&labelColor=050201" alt="Website" /></a>
+  <a href="https://github.com/jimuzhe/morph"><img src="https://img.shields.io/badge/version-1.1.1-050201?style=for-the-badge&labelColor=EC4E02" alt="Version" /></a>
+  <img src="https://img.shields.io/badge/platform-Chrome%20Extension-050201?style=for-the-badge&labelColor=333" alt="Chrome Extension" />
+  <img src="https://img.shields.io/badge/license-MIT-050201?style=for-the-badge&labelColor=333" alt="MIT License" />
+</p>
 
-- 打开本地 `.html` 文件 → 点击扩展图标 → 直接编辑 → 保存
-- 打开在线网页 → 点击扩展图标 → 自动下载/本地化为 blob 页面 → 进入编辑 → 保存为 HTML 文件
+<p align="center">
+  <a href="https://morph-longdz6299-7110s-projects.vercel.app">Website</a>
+  &nbsp;&middot;&nbsp;
+  <a href="#installation">Install</a>
+  &nbsp;&middot;&nbsp;
+  <a href="#development">Development</a>
+  &nbsp;&middot;&nbsp;
+  <a href="https://github.com/jimuzhe/morph/issues">Issues</a>
+</p>
 
-## 工具栏样式
+<br />
 
-iOS 风格无边框浮动工具栏：
+## Overview
 
-- 底部居中悬浮
-- 高斯模糊 + 半透明毛玻璃
-- 圆角胶囊造型
-- 深色/浅色模式自适应
+Morph is not a standalone web app. It is a **page-native editor** — a floating toolbar injected into whatever HTML page you already have open.
 
-## 工具
+| Context | Flow |
+| --- | --- |
+| Local `.html` files | Open in Chrome → activate Morph → edit in place → save back to disk |
+| Live webpages | Activate Morph → page is localized into an editable copy → edit → export as HTML |
 
-| 工具 | 功能 |
-|------|------|
-| ↖ 选择移动 | 点击选中元素，拖拽移动位置 |
-| T 编辑文字 | 双击或选中后编辑文字内容 |
-| 🖼 替换图片 | 选中图片后本地上传替换 |
-| ↩ ↪ | 撤销 / 重做 |
-| ↓ 保存 | 保存到本地文件 |
-| ✕ 退出 | 关闭编辑模式 |
+No DevTools panels. No separate canvas. The page itself becomes the workspace.
 
-## 安装使用
+<br />
+
+## How It Works
+
+```mermaid
+flowchart LR
+  A[Open HTML page] --> B[Click Morph icon]
+  B --> C{Page type}
+  C -->|Local file| D[Inject editor]
+  C -->|Remote URL| E[Localize assets]
+  E --> D
+  D --> F[Floating toolbar]
+  F --> G[Select / Move / Edit]
+  F --> H[AI assistant]
+  G --> I[Save to file]
+  H --> I
+```
+
+<br />
+
+## Features
+
+<table>
+  <tr>
+    <td width="50%" valign="top">
+      <h3>Slide-like editing</h3>
+      <p>Open any HTML file or webpage and edit visually on the page itself. Select elements, drag to reposition, resize, and double-click to change copy.</p>
+    </td>
+    <td width="50%" valign="top">
+      <h3>Glassmorphism toolbar</h3>
+      <p>An iOS-inspired floating capsule sits at the bottom of the viewport — draggable, edge-snappable, and collapsible into a compact orb when you need more space.</p>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <h3>AI assistant in context</h3>
+      <p>Describe changes in plain language. Morph applies HTML edits directly on the page, scoped to the element you select, with full undo support.</p>
+    </td>
+    <td width="50%" valign="top">
+      <h3>Local-first workflow</h3>
+      <p>Local files save back to their original path. Remote pages are localized first, then exported as standalone HTML with Cmd/Ctrl+S.</p>
+    </td>
+  </tr>
+</table>
+
+<br />
+
+## Toolbar
+
+| Tool | Action |
+| --- | --- |
+| Select & Move | Click to select, drag to reposition |
+| Edit Text | Double-click or select, then edit inline |
+| Replace Image | Upload a local file to swap the selected image |
+| Undo / Redo | Full history stack |
+| Save | Write changes to the local HTML file |
+| Exit | Leave edit mode |
+
+<br />
+
+## Installation
 
 ```bash
+git clone https://github.com/jimuzhe/morph.git
+cd morph
 npm install
 npm run build
 ```
 
-1. 打开 Chrome → `chrome://extensions`
-2. 开启「开发者模式」
-3. 「加载已解压的扩展程序」→ 选择 `dist` 目录
-4. **重要**：在扩展详情中开启「允许访问文件网址」（编辑本地 HTML 必须）
-5. 用 Chrome 打开一个 HTML 文件或网页
-6. 点击扩展图标 → 工具栏出现在页面底部
+1. Open Chrome and navigate to `chrome://extensions`
+2. Enable **Developer mode**
+3. Click **Load unpacked** and select the `dist/` directory
+4. In the extension details, enable **Allow access to file URLs** (required for local HTML editing)
+5. Open any HTML file or webpage in Chrome
+6. Click the Morph icon — the toolbar appears at the bottom of the page
 
-## 开发
+<br />
+
+## Keyboard Shortcuts
+
+| Shortcut | Action |
+| --- | --- |
+| `Ctrl/Cmd + Z` | Undo |
+| `Ctrl/Cmd + Y` | Redo |
+| `Ctrl/Cmd + S` | Save |
+| `Esc` | Exit edit mode / cancel text editing |
+| `Delete` | Remove selected element |
+
+<br />
+
+## Project Structure
+
+```
+morph/
+├── src/
+│   ├── background/serviceWorker.ts   # Toggle edit mode on icon click
+│   ├── content/
+│   │   ├── index.ts                  # Content script entry
+│   │   ├── PageEditor.ts             # In-page editing engine
+│   │   ├── FloatingToolbar.ts        # Glassmorphism toolbar
+│   │   ├── AIChatPanel.ts            # AI assistant panel
+│   │   └── styles.css                # Editor & selection styles
+│   └── shared/
+│       ├── htmlDocument.ts           # HTML serialization & localization
+│       └── fileSave.ts               # Local file export
+├── site/                             # Next.js marketing site
+├── icons/                            # Extension icon set
+├── public/                           # Shared static assets
+└── scripts/
+    ├── package.mjs                   # Extension zip packaging
+    └── generate-icons.py             # Icon generation from master source
+```
+
+<br />
+
+## Marketing Site
+
+The landing page lives in `site/` — a Next.js app with scroll-driven motion, bento feature cards, and a cinematic download section.
 
 ```bash
+cd site
+npm install
+npm run dev      # http://localhost:3000
+npm run build    # production build
+```
+
+Deployed on Vercel with `site/` as the root directory.
+
+<br />
+
+## Development
+
+```bash
+# Extension — watch mode
 npm run dev
-# 在 chrome://extensions 加载 dist 目录，修改代码后刷新扩展
+# Reload the unpacked extension in chrome://extensions after changes
+
+# Package for distribution
+npm run package
 ```
 
-## 快捷键
+<details>
+  <summary><strong>Icon generation</strong></summary>
 
-- `Ctrl/Cmd + Z` — 撤销
-- `Ctrl/Cmd + Y` — 重做
-- `Ctrl/Cmd + S` — 保存
-- `Esc` — 退出编辑 / 取消文字编辑
-- `Delete` — 删除选中元素
+  <br />
 
-## 项目结构
+  Regenerate extension and site icons from the master source:
 
-```
-src/
-├── background/serviceWorker.ts   # 点击图标 → 切换编辑模式
-├── content/
-│   ├── index.ts                  # Content Script 入口
-│   ├── PageEditor.ts             # 页面内编辑逻辑
-│   ├── FloatingToolbar.ts        # iOS 浮动工具栏
-│   └── styles.css                # 工具栏 & 选中样式
-└── shared/
-    ├── htmlDocument.ts           # HTML 序列化 / 本地化
-    └── fileSave.ts               # 保存到本地文件
-```
+  ```bash
+  python3 scripts/generate-icons.py
+  ```
+
+  Requires `Pillow`. Output is written to `icons/`, `public/`, and `site/public/`.
+
+</details>
+
+<br />
 
 ## License
 

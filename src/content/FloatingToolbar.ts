@@ -112,7 +112,7 @@ export class FloatingToolbar {
     const fabIcon = document.createElement('img')
     fabIcon.className = 'htmlppt-fab-icon'
     fabIcon.src = chrome.runtime.getURL('icons/icon48.png')
-    fabIcon.alt = 'HTMLPPT'
+    fabIcon.alt = 'Morph'
     this.fab.appendChild(fabIcon)
 
     this.root.appendChild(this.panel)

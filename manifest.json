@@ -1,12 +1,12 @@
 {
   "manifest_version": 3,
-  "name": "HTMLPPT Editor",
+  "name": "Morph",
   "version": "1.1.1",
-  "description": "像编辑 PPT 一样修改 HTML 页面 — 在页面上直接编辑，零代码门槛",
+  "description": "Edit any HTML page like a slide deck — drag, edit text, swap images, and refine layouts with AI.",
   "permissions": ["activeTab", "scripting", "storage", "downloads"],
   "host_permissions": ["<all_urls>"],
   "action": {
-    "default_title": "HTMLPPT 编辑此页面",
+    "default_title": "Morph — Edit this page",
     "default_icon": {
       "16": "icons/icon16.png",
       "48": "icons/icon48.png",
@@ -28,7 +28,8 @@
   "icons": {
     "16": "icons/icon16.png",
     "48": "icons/icon48.png",
-    "128": "icons/icon128.png"
+    "128": "icons/icon128.png",
+    "192": "icons/icon192.png"
   },
   "web_accessible_resources": [
     {

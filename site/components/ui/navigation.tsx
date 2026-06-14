@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
+import { MorphLogo } from "@/components/ui/morph-logo";
 
 const navItems = [
   { id: "home", label: "Home" },
@@ -76,9 +77,10 @@ export function Navigation() {
         <button
           type="button"
           onClick={() => scrollToSection("home")}
-          className="text-sm font-black tracking-[0.28em] text-white transition-opacity hover:opacity-80 md:text-base"
+          className="inline-flex shrink-0 transition-opacity hover:opacity-80"
+          aria-label="Morph home"
         >
-          MORPH
+          <MorphLogo className="size-7 md:size-8" showWordmark />
         </button>
 
         <div className="flex items-center gap-1 rounded-full border border-white/10 bg-white/[0.04] p-1 backdrop-blur-md md:gap-2">

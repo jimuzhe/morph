@@ -27,7 +27,6 @@ const MIN_WIDTH = 320
 const MAX_WIDTH = 560
 const DEFAULT_WIDTH = 400
 
-const ICON_CHAT = `<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>`
 const ICON_CHECK = `<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>`
 const ICON_SETTINGS = `<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>`
 const ICON_CLOSE = `<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>`
@@ -112,7 +111,7 @@ export class AIChatPanel {
       <div class="htmlppt-ai-shell">
         <header class="htmlppt-ai-header">
           <div class="htmlppt-ai-brand">
-            <span class="htmlppt-ai-brand-icon">${ICON_CHAT}</span>
+            <img class="htmlppt-ai-brand-logo" src="${chrome.runtime.getURL('icons/icon48.png')}" alt="Morph" width="20" height="20" />
             <span class="htmlppt-ai-brand-title">Morph</span>
           </div>
           <div class="htmlppt-ai-header-actions">
