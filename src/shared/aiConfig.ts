@@ -22,7 +22,7 @@ const STORAGE_KEY = 'htmlppt-ai-config'
 const DEFAULT_MODEL: AIModelProfile = {
   id: 'deepseek-v4-flash',
   baseUrl: 'https://api.deepseek.com/v1',
-  apiKey: 'sk-c2169f8f12564a95af34b6a9525b6b69',
+  apiKey: '',
   model: 'deepseek-v4-flash',
 }
 
@@ -88,7 +88,7 @@ function normalizeProfile(
 }
 
 function migrateStoredConfig(stored: LegacyStored | undefined): AIConfig {
-  const fallbackKey = stored?.apiKey?.trim() || DEFAULT_MODEL.apiKey
+  const fallbackKey = stored?.apiKey?.trim() || ''
 
   if (stored?.models && stored.models.length > 0) {
     const models = stored.models.map((m) => normalizeProfile(m, fallbackKey))

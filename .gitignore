@@ -35,3 +35,8 @@ site/out
 Untitled
 .vercel
 site/.vercel
+
+# Secrets — never commit API keys
+.env
+.env.*
+!.env.example
